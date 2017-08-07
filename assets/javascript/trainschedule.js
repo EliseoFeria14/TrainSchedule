@@ -22,6 +22,8 @@ $(document).ready(function(){
 //getting the info from the form fields and saving to firebase
 	$('#submitInfo').on("click",function(event){
 
+		
+
 		var trainNameInput = $('#TrainNameInput').val().trim();
 		console.log(trainNameInput);
 
@@ -34,6 +36,9 @@ $(document).ready(function(){
 		var trainFrequency = $('#frequencyInput').val().trim();
 		console.log(trainFrequency);
 
+		if (trainNameInput == "" || destinationInput == "" || startTrainTime == "" || trainFrequency == ""){
+			alert("Fill out all form fields")
+		} else{
 		var newTrain = {
 			Name: trainNameInput,
 			Destination: destinationNameInput,
@@ -52,6 +57,7 @@ $(document).ready(function(){
 		$("#destinationInput").val("");
 		$("#initialTrainTime").val("");
 		$("#frequencyInput").val("");
+		};
 
 	});
 //functions converting the time using moment js and give th numbers for Next Arrival and Minutes away and Append to tbody
