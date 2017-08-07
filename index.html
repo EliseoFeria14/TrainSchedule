@@ -10,111 +10,102 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 	<!-- CSS stylesheet -->
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<!-- jQuery link -->
+	<script
+	  src="http://code.jquery.com/jquery-3.2.1.js"
+	  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+	  crossorigin="anonymous"></script>
+	  <!-- Firebase LInk -->
+	<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+	<!-- MomentJS linked -->
+	 <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 	<!-- JS stylesheet -->
 	<script type="text/javascript" src =" assets/javascript/trainschedule.js"></script>
 </head>
 <body>
 	<div class="container">
+		<!-- title jumbotron -->
 		<div class="row">
 			<div class="col-lg-10 col-lg-offset-1">
 				<div class="jumbotron">
-					<h1>Train Schedule to the Land of Fire</h1>
+					<h1>Train Schedule for Travel Express Trains</h1>
 				</div>
 			</div>
 		</div>
-
+		<!-- train schedule divs -->
 		<div class="row">
 			<div class="col-lg-10 col-lg-offset-1">
 				<div class="panel panel default">
-					<table class="table table-striped table-bordered">
-						<thead>
-							<tr>
-								<th><strong>Train Name</strong></th>
-								<th><strong>Destination</strong></th>
-								<th><strong>Frequency (Min)</strong></th>
-								<th><strong>Next Arrival</strong></th>
-								<th><strong>Minutes Away</strong></th>
-							<tr>
-						</thead>
+					<div class="panel-heading">Current Train Schedule
+					</div>
 
-						<tbody>
-							<tr>
-								<td>Fiya</td>
-								<td>Fire Village</td>
-								<td>10 min</td>
-								<td>TBD</td>
-								<td>TBA</td>
-							</tr>
-							<tr>
-								<td>Wutar</td>
-								<td>Water Village</td>
-								<td>30 min</td>
-								<td>TBD</td>
-								<td>TBA</td>
-							</tr>
-							<tr>
-								<td>Sandie</td>
-								<td>20 Village</td>
-								<td>60 min</td>
-								<td>TBD</td>
-								<td>TBA</td>
-							</tr>
-							<tr>
-								<td>Misty</td>
-								<td>Mist Village</td>
-								<td>15 min</td>
-								<td>TBD</td>
-								<td>TBA</td>
-							</tr>
-						</tbody>
-					</table>
+					<div class="panel-body">
+						<table class="table table-striped table-bordered">
+							<thead>
+								<trs>
+									<th><strong>Train Name</strong></th>
+									<th><strong>Destination</strong></th>
+									<th><strong>Frequency (Min)</strong></th>
+									<th><strong>Next Arrival</strong></th>
+									<th><strong>Minutes Away</strong></th>
+								<tr>
+							</thead>
+
+							<tbody id="tableEntry">
+
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
-
+		<!-- Form to add new Train info to Schedule -->
 		<div class="row">
 			<div class="col-lg-10 col-lg-offset-1">
 				<div class="panel panel-default">
-					<form class="horizontal-from">
-						<div class="form-group">
-							<label for="TrainNameInput" class="col-md-3 control-lable">Train Name</label>
-							<div class="col-md-9">
-								<input type="text" class="form-control" id="TrainNameInput" name="TrainName" placeholder="Type Train Name">
+					<div class="panel-heading">Add New Train
+					</div>
+					<div class="panel-body">
+						<form class="horizontal-from">
+							<div class="form-group">
+								<label for="TrainNameInput" class="col-md-3 control-lable">Train Name</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" id="TrainNameInput" name="TrainName" placeholder="Type Train Name">
+								</div>
 							</div>
-						</div>
-						<br>
-						<div class="form-group">
-							<label for="destinationInput" class="col-md-3 control-lable">Destination</label>
-							<div class="col-md-9">
-								<input type="text" class="form-control" id="destinationInput" name="Destination" placeholder="Type Destination">
+							<br>
+							<div class="form-group">
+								<label for="destinationInput" class="col-md-3 control-lable">Destination</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" id="destinationInput" name="Destination" placeholder="Type Destination">
+								</div>
 							</div>
-						</div>
-						<br>
-						<div class="form-group">
-							<label for="initialTrainTime" class="col-md-3 control-lable">Train Time (military time)</label>
-							<div class="col-md-9">
-								<input type="text" class="form-control" id="initialTrainTime" name="intialTimeInput" placeholder="HH:mm">
+							<br>
+							<div class="form-group">
+								<label for="initialTrainTime" class="col-md-3 control-lable">Train Time (military time)</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" id="initialTrainTime" name="intialTimeInput" placeholder="HH:mm">
+								</div>
 							</div>
-						</div>
-						<br>
-						<div class="form-group">
-							<label for="frequencyInput" class="col-md-3 control-lable">Frequency (Min)</label>
-							<div class="col-md-9">
-								<input type="text" class="form-control" id="frequencyInput" name="Frequency" placeholder="5">
+							<br>
+							<div class="form-group">
+								<label for="frequencyInput" class="col-md-3 control-lable">Frequency (Min)</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" id="frequencyInput" name="Frequency" placeholder="5">
+								</div>
 							</div>
-						</div>
-						<br>
-						<div class="form-group">
-							<div class="col-md-10 col-md-offset-3">
-								<button type="submit" class="btn btn-default">Submit</button>
+							<br>
+							<div class="form-group">
+								<div class="col-md-10 col-md-offset-3">
+									<button type="button" id="submitInfo" class="btn btn-default">Submit</button>
+								</div>
 							</div>
-						</div>
-						<br>
-						<br>
-					</form>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
+
 	</div>
 
 </body>
