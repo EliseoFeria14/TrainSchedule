@@ -1,3 +1,9 @@
 body {
-	background-color: red;
+	background-image: url("../images/trainstation.jpg");
+}
+.jumbotron{
+	opacity: .75;
+}
+.col-lg-10{
+	opacity:.9;
 }
